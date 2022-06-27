@@ -8,7 +8,7 @@ The notebook is available on Google Colab : https://colab.research.google.com/dr
 
 The first part, which demonstrate the general computations on one reduced dataset (keeping only the 1,000 most varying features instead of 10,000), is meant to be run on a GPU. You may then want to use the one available on Google Colab for free.
 
-The second part, which iterates on all datasets keeping this time the  10,000 most varying features, cannot be run on Google Colab without running out of memory. We ran it on a GPU servor and save the results for each dataset in a json file, that we provide in this GitHub repository and that are meant to be loaded on the notebook.
+The second part, which iterates on all datasets keeping this time the  10,000 most varying features, cannot be run on Google Colab without running out of memory. We ran it on a GPU servor and save the results for each dataset in a json file, that we provide in this GitHub repository and that is meant to be loaded on the notebook.
 
 You can still look at the steps we used to produce these datas on the notebook.
 The results are shown at the end as barplots.
