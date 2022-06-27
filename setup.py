@@ -3,7 +3,7 @@ from test_functions import __version__
 
 
 setup(name='test_functions',
-version='0.1',
+version= __version__,
 description='Testing the computation of OTscOmics',
 url='https://github.com/chloevogel/Test_OTscOmics',
 author='Chloé Vogel',
