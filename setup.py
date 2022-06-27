@@ -1,4 +1,7 @@
 from setuptools import setup
+from test_functions import __version__
+
+
 setup(name='test_functions',
 version='0.1',
 description='Testing the computation of OTscOmics',
