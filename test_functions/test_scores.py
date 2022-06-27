@@ -1,3 +1,7 @@
+
+__version__ = 'dev'
+#####################################################
+
 import numpy as np
 import scipy as sp
 import torch
