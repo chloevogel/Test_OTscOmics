@@ -10,5 +10,5 @@ The first part, which demonstrate the general computations on one reduced datase
 
 The second part, which iterates on all datasets keeping this time the  10,000 most varying features, cannot be run on Google Colab without running out of memory. We ran it on a GPU servor and saved the results for each dataset in a json file, that we provide in this GitHub repository and that is meant to be loaded on the notebook.
 
-You can still look at the steps we used to produce these datas on the notebook.
+You can still look at the steps we used to produce this data on the notebook.
 The results are shown at the end as barplots.
