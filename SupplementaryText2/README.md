@@ -4,7 +4,7 @@ This Python script will allow you to run properly the reproduction of the [Suppl
 
 
 ## Jupyter Notebook
-The notebook is available on Google Colab : https://colab.research.google.com/drive/1t6dHD2bP4XYPhevJyXpPcsIF2f-dwEJU?usp=sharing
+The notebook is available on Google Colab : [https://colab.research.google.com/drive/1t6dHD2bP4XYPhevJyXpPcsIF2f-dwEJU?usp=sharing](https://colab.research.google.com/drive/1cK3AFOOS82chwneU1zotIgIR_z9JE_Qm?usp=sharing)
 
 ## Data
 The dataset used and provided here is the Li Tumor (Li et al., 2017) dataset, as indicated in the Supplementary Text 2.
