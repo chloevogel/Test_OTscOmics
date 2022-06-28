@@ -4,7 +4,7 @@ These data and Python script will allow you to run properly our reproduction of 
 Optimal Transport is there applied as a similarity metric in between single-cell omics data.
 
 ## Jupyter Notebook
-The notebook is available on Google Colab : https://colab.research.google.com/drive/1ExY9QUKArbspCRYQIvPssSb8fCfkDW8b?usp=sharing
+The notebook is available on Google Colab : https://colab.research.google.com/drive/1rsGUv4wT_lJfTWyCju3ohCC0fo-g_26F?usp=sharing
 
 The first part, which demonstrate the general computations on one reduced dataset (keeping only the 1,000 most varying features instead of 10,000), is meant to be run on a GPU. You may then want to use the one available on Google Colab for free.
 
@@ -41,7 +41,7 @@ We also wanted to try to reproduce the analysis mentionned in the [Supplementary
 
 We based our analysis on the same dataset (the Li Tumor (Li et al., 2017) dataset) that we provide on this GitHub for more convenience.
 
-Another notebook for this specific analysis is available here : https://colab.research.google.com/drive/1t6dHD2bP4XYPhevJyXpPcsIF2f-dwEJU?usp=sharing
+Another notebook for this specific analysis is available here : https://colab.research.google.com/drive/1cK3AFOOS82chwneU1zotIgIR_z9JE_Qm?usp=sharing
 
 
 ---
