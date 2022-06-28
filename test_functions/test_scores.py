@@ -70,7 +70,7 @@ def OT_distance_matrix(data : pd.DataFrame) :
 
 
 
-def hierarchical_clustering(D : np.ndarray, clusters : np.ndarray, n_clusters = -1):
+def hierarchical_clustering(D : np.ndarray, clusters : list, n_clusters : int = -1):
     if n_clusters > 0 :
         clustering = AgglomerativeClustering(n_clusters = n_clusters, affinity = "precomputed", linkage = "complete" )
         n_fin = n_clusters
@@ -90,7 +90,7 @@ def hierarchical_clustering(D : np.ndarray, clusters : np.ndarray, n_clusters = 
     return clustering.labels_, n_fin
 
 
-def spectral_clustering(D, clusters) : 
+def spectral_clustering(D : np.ndarray, clusters : list) : 
     clustering = SpectralClustering(affinity = "precomputed")
     A = 1 - D/D.max()
     (S_score, n_fin) = (-1,0)
@@ -107,7 +107,7 @@ def spectral_clustering(D, clusters) :
     return clustering.labels_, n_fin
 
 
-def leiden_clustering(D : np.ndarray, clusters : np.ndarray, adata, OT = False) :
+def leiden_clustering(D : np.ndarray, clusters : list, adata, OT = False) :
 
     from scanpy.neighbors import _compute_connectivities_umap as conn_umap
 
@@ -155,20 +155,20 @@ def leiden_clustering(D : np.ndarray, clusters : np.ndarray, adata, OT = False) 
 
 
 
-def S_score(D : np.ndarray, clusters : np.ndarray):
+def S_score(D : np.ndarray, clusters : list):
     return silhouette_score(D, clusters, metric = "precomputed")
 
-def C_score(D : np.ndarray, clusters : np.ndarray):
+def C_score(D : np.ndarray, clusters : list):
     return otscomics.C_index(D, np.array(clusters))
 
 
-def ARI(clusters : np.ndarray, labels):
+def ARI(clusters : list, labels : list):
     return adjusted_rand_score(clusters, labels)
 
-def NMI(clusters : np.ndarray, labels) :
+def NMI(clusters : list, labels : list) :
     return normalized_mutual_info_score(clusters, labels)
 
-def AMI(clusters : np.ndarray, labels):
+def AMI(clusters : list, labels : list):
     return adjusted_mutual_info_score(clusters, labels)
 
 
