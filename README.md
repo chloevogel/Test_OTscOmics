@@ -1,6 +1,6 @@
 # Test and reproduction of the "OT improves cell-cell similarity inference in single-cell omics data" paper
 
-These data and Python script will allow you to run properly our reproduction of the '[Optimal Transport improves cell-cell similarity inference in single-cell omics data](https://academic.oup.com/bioinformatics/article/38/8/2169/6528312)' paper computations. 
+These data and Python script will allow you to run properly our reproduction of the '[Optimal Transport improves cell-cell similarity inference in single-cell omics data](https://academic.oup.com/bioinformatics/article/38/8/2169/6528312)' paper (Huizing et al., 2022) computations. 
 Optimal Transport is there applied as a similarity metric in between single-cell omics data.
 
 ## Jupyter Notebook
@@ -24,4 +24,6 @@ Another notebook for this specific analysis is available here : https://colab.re
 ---
 **Reference :**
 
-Liu,L. et al. (2019) Deconvolution of single-cell multi-omics layers reveals regulatory heterogeneity. Nat Commun, 10, 470
+Huizing,G.-J. et al. (2022) Optimal transport improves cell–cell similarity inference in single-cell omics data. Bioinformatics **38**, 2169–2177
+
+Liu,L. et al. (2019) Deconvolution of single-cell multi-omics layers reveals regulatory heterogeneity. Nat Commun, **10**, 470
