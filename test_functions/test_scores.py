@@ -70,18 +70,18 @@ def OT_distance_matrix(data : pd.DataFrame) :
 
 
 
-def hierarchical_clustering(D : np.ndarray, clusters : list, n_clusters : int = -1):
+def hierarchical_clustering(D : np.ndarray, n_clusters : int = -1):
     if n_clusters > 0 :
         clustering = AgglomerativeClustering(n_clusters = n_clusters, affinity = "precomputed", linkage = "complete" )
         n_fin = n_clusters
     else :
-        (S_score, n_fin) = (-1,0)
+        (S, n_fin) = (-1,0)
         clustering = AgglomerativeClustering(affinity = "precomputed", linkage = "complete" )
         for n in range(3,26):
             clustering.set_params(n_clusters = n).fit(D)
-            S_int = silhouette_score(clustering.labels_.reshape(-1,1),np.array(clusters))
-            if S_int > S_score :
-                S_score, n_fin = S_int,n
+            S_int = S_score(D, clustering.labels_)
+            if S_int > S :
+                S, n_fin = S_int,n
         clustering.set_params(n_clusters = n_fin)
 
     # Fitting on Euclidian D-Matrix
@@ -90,16 +90,16 @@ def hierarchical_clustering(D : np.ndarray, clusters : list, n_clusters : int = 
     return clustering.labels_, n_fin
 
 
-def spectral_clustering(D : np.ndarray, clusters : list) : 
+def spectral_clustering(D : np.ndarray) : 
     clustering = SpectralClustering(affinity = "precomputed")
     A = 1 - D/D.max()
-    (S_score, n_fin) = (-1,0)
+    (S, n_fin) = (-1,0)
     for n_clusters in range(3,26):
         clustering.set_params(n_clusters = n_clusters)
         clustering.fit(A)
-        S_int = silhouette_score(clustering.labels_.reshape(-1,1),np.array(clusters))
-        if S_int > S_score :
-            S_score, n_fin = S_int,n_clusters
+        S_int = S_score(A, clustering.labels_)
+        if S_int > S :
+            S, n_fin = S_int,n_clusters
 
     clustering.set_params(n_clusters = n_fin)
     clustering.fit(A)
@@ -212,8 +212,8 @@ def test_data(file) :
 
     # Hierarchical clustering supervised (column 0)
     n_clusters = len(names)
-    cl_eu, n_clus_eu = hierarchical_clustering(D_eu, clusters, n_clusters = n_clusters)
-    cl_ot, n_clus_ot = hierarchical_clustering(D_ot, clusters, n_clusters = n_clusters)
+    cl_eu, n_clus_eu = hierarchical_clustering(D_eu, n_clusters = n_clusters)
+    cl_ot, n_clus_ot = hierarchical_clustering(D_ot, n_clusters = n_clusters)
     aris[:,0] = ARI(clusters, cl_eu), ARI(clusters, cl_ot)
     nmis[:,0] = NMI(clusters, cl_eu), NMI(clusters, cl_ot)
     amis[:,0] = AMI(clusters, cl_eu), AMI(clusters, cl_ot)
@@ -222,8 +222,8 @@ def test_data(file) :
     print("Hierachical cl. supervised finished")
 
     # Hierarchical clustering unsupervised (column 1)
-    cl_eu, n_clus_eu = hierarchical_clustering(D_eu, clusters)
-    cl_ot, n_clus_ot = hierarchical_clustering(D_ot, clusters)
+    cl_eu, n_clus_eu = hierarchical_clustering(D_eu)
+    cl_ot, n_clus_ot = hierarchical_clustering(D_ot)
     aris[:,1] = ARI(clusters, cl_eu), ARI(clusters, cl_ot)
     nmis[:,1] = NMI(clusters, cl_eu), NMI(clusters, cl_ot)
     amis[:,1] = AMI(clusters, cl_eu), AMI(clusters, cl_ot)
@@ -234,8 +234,8 @@ def test_data(file) :
     # Spectral clustering (column 2)
     adata = ad.AnnData(data.T)
     adata.obs['cell_line'] = clusters
-    cl_eu, n_clus_eu = spectral_clustering(D_eu, clusters)
-    cl_ot, n_clus_ot = spectral_clustering(D_ot, clusters)
+    cl_eu, n_clus_eu = spectral_clustering(D_eu)
+    cl_ot, n_clus_ot = spectral_clustering(D_ot)
     aris[:,2] = ARI(clusters, cl_eu), ARI(clusters, cl_ot)
     nmis[:,2] = NMI(clusters, cl_eu), NMI(clusters, cl_ot)
     amis[:,2] = AMI(clusters, cl_eu), AMI(clusters, cl_ot)
