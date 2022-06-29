@@ -97,7 +97,7 @@ def spectral_clustering(D : np.ndarray) :
     for n_clusters in range(3,26):
         clustering.set_params(n_clusters = n_clusters)
         clustering.fit(A)
-        S_int = S_score(A, clustering.labels_)
+        S_int = S_score(D, clustering.labels_)
         if S_int > S :
             S, n_fin = S_int,n_clusters
 
